@@ -20,13 +20,13 @@ wb = Workbook()
 # ---------------- Sources ----------------
 src = wb.active; src.title = "Sources"
 src_rows = [
- ("S1","Sarvam API prices (Pay as you go, excl. GST): STT ₹0.49/min; Bulbul v3 TTS ₹3.00 per 1K chars; Bulbul v4 Flash ₹1.00 per 1K chars; Sarvam 105B ₹15 in / ₹60 out per 1M tokens; Dubbing ₹40/min per target language; ₹100 free credits for every verified user","Sarvam AI docs, API pricing","https://docs.sarvam.ai/api/getting-started/pricing","14 Nov 2026"),
- ("S2","Scheduled commercial banks 2026: 12 public sector, 21 private, 11 small finance, 4 active payments banks, 28 regional rural, 44 foreign","Physics Wallah, 'How Many Banks Are There in India in 2026?' (18 Jul 2026), based on RBI lists","https://www.pw.live/banking/exams/how-many-banks-are-there-in-india-in-2026","14 Nov 2026"),
- ("S3","Insurers registered with IRDAI as of 1 Apr 2025: 26 life, 33 non-life (incl. standalone health)","Wikipedia, List of insurance companies in India (cites IRDAI lists)","https://en.wikipedia.org/wiki/List_of_insurance_companies_in_India","14 Nov 2026"),
- ("S4","NBFCs in RBI's 2026-27 Upper Layer list: 17","RBI Upper Layer list, reported 12 Aug 2026","https://web-upsc.getmarks.app/current-affair/rbi-releases-2026-27-upper-layer-nbfc-list-5a57de/","14 Nov 2026"),
+ ("S1","Sarvam API prices (Pay as you go, excl. GST): STT ₹0.49/min; Bulbul v3 TTS ₹3.00 per 1K chars; Bulbul v4 Flash ₹1.00 per 1K chars; Sarvam 105B ₹15 in / ₹60 out per 1M tokens; Dubbing ₹40/min per target language; ₹100 free credits for every verified user","Sarvam AI docs, API pricing (primary)","https://docs.sarvam.ai/api/getting-started/pricing","14 Nov 2026"),
+ ("S2","Banks in India: 12 public sector, 21 private sector, 11 small finance, 5 payments, 28 regional rural, 44 foreign","Reserve Bank of India, 'Banks in India' list (primary)","https://rbi.org.in/Commonman/English/Scripts/BanksInIndia.aspx","14 Nov 2026"),
+ ("S3","Insurers as of 31 Mar 2025: 26 life, 25 general, 8 standalone health (33 non-life in total)","IRDAI Annual Report 2024-25, as summarised by Ditto Insurance","https://www.joinditto.in/articles/general/irdai-annual-report/","14 Nov 2026"),
+ ("S4","NBFCs in the 2026-27 Upper Layer list: 17","Reserve Bank of India press release, 6 Aug 2026 (primary)","https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63301","14 Nov 2026"),
  ("S5","Private satellite TV channels: 908 in 2024-25","Ministry of I&B reply in Lok Sabha, reported by News On AIR (24 Jul 2025)","https://www.newsonair.gov.in/indias-media-landscape-expands-over-1-55-lakh-publications-908-private-tv-channels-ib-ministry","14 Nov 2026"),
- ("S6","DPIIT-recognised startups: over 2.23 lakh as of 31 Mar 2026","Angel One News, citing DPIIT (FY26)","https://www.angelone.in/news/economy/startup-count-crosses-2-23-lakh-as-india-recognises-55-200-entities-in-fy26-employment-expands","14 Nov 2026"),
- ("S7","States and Union Territories of India: 28 states + 8 UTs = 36","Government of India (constitutional count)","https://knowindia.india.gov.in/states-uts/","14 Nov 2026"),
+ ("S6","DPIIT-recognised startups: 2,12,283 as on 31 Jan 2026","Press Information Bureau, Ministry of Commerce & Industry, 17 Mar 2026 (primary)","https://pib.gov.in/PressReleasePage.aspx?PRID=2241313","14 Nov 2026"),
+ ("S7","States and Union Territories of India: 28 states + 8 UTs = 36","Government of India, Know India portal (primary)","https://knowindia.india.gov.in/states-uts/","14 Nov 2026"),
 ]
 src["A1"] = "Sources: every measured number in this model"; src["A1"].font = TITLE
 for j,h in enumerate(["ID","Fact used","Source","URL","Accessed"],1):
@@ -84,21 +84,21 @@ inp.column_dimensions["A"].width=62; inp.column_dimensions["B"].width=14; inp.co
 seg = wb.create_sheet("Segments", 1)
 seg["A1"]="Bottom-up market: accounts × usage × Sarvam price × adoption"; seg["A1"].font=TITLE
 seg["A2"]="Accounts are measured (Sources tab). Usage, adoption and share are assumptions (yellow) to challenge. ₹ Cr = ₹1 crore = ₹10 million."; seg["A2"].font=Font(name=F, italic=True)
-hdr=["Segment","Accounts","Source","Use case","Monthly volume per adopting account","Volume unit","₹ per unit","Annual spend per adopter (₹)","Full-adoption market (₹ Cr/yr)","Adoption in 3 years","Serviceable market (₹ Cr/yr)","Sarvam share","Sarvam revenue potential (₹ Cr/yr)","Rank by spend per adopter"]
+hdr=["Segment","Accounts","Source","Use case","Monthly volume per adopting account","Volume unit","₹ per unit","Annual spend per adopter (₹)","Full-adoption market (₹ Cr/yr)","Adoption in 3 years","Serviceable market (₹ Cr/yr)","Sarvam share","Sarvam revenue potential (₹ Cr/yr)","Rank by spend per adopter","Sarvam product to lead with"]
 for j,h in enumerate(hdr,1):
     c=seg.cell(4,j,h); c.font=HEAD; c.fill=DARK; c.alignment=Alignment(wrap_text=True,vertical="center")
 seg.row_dimensions[4].height=48
 V="=Inputs!$B$25"; D="=Inputs!$B$29"
 data=[
  ("Banks: public and private",33,"S2: 12 + 21","Voice support and collections",500000,"call minutes",V,0.5),
- ("Banks: small finance, RRB, payments",43,"S2: 11 + 28 + 4","Voice support and collections",50000,"call minutes",V,0.3),
+ ("Banks: small finance, RRB, payments",44,"S2: 11 + 28 + 5","Voice support and collections",50000,"call minutes",V,0.3),
  ("Banks: foreign (India operations)",44,"S2","Voice support",10000,"call minutes",V,0.2),
  ("Insurers: life",26,"S3","Renewal and claims calls",100000,"call minutes",V,0.4),
  ("Insurers: general and health",33,"S3","Renewal and claims calls",100000,"call minutes",V,0.4),
  ("NBFCs: RBI upper layer",17,"S4","Collections and onboarding calls",200000,"call minutes",V,0.5),
  ("Government: states and UTs",36,"S7","Citizen helplines",200000,"call minutes",V,0.3),
  ("Media: private TV channels",908,"S5","Dubbing into Indian languages",300,"source minutes dubbed",D,0.2),
- ("Startups: DPIIT recognised",223000,"S6","Self-serve API use",5000,"₹ of API spend",1,0.02),
+ ("Startups: DPIIT recognised",212283,"S6","Self-serve API use",5000,"₹ of API spend",1,0.02),
 ]
 first=5
 for i,(name,acc,s,use,vol,unit,price,adopt) in enumerate(data):
@@ -117,7 +117,9 @@ for i,(name,acc,s,use,vol,unit,price,adopt) in enumerate(data):
     c=seg.cell(r,12,"=$B$17"); c.font=BLACK; c.number_format=PCT
     c=seg.cell(r,13,f"=K{r}*L{r}"); c.number_format=CR
     c=seg.cell(r,14,f"=RANK(H{r},$H${first}:$H${first+len(data)-1})"); c.number_format="0"
-    for j in range(1,15): seg.cell(r,j).border=BOX
+    prod={"Banks":"Samvaad voice agents","Insurers":"Samvaad voice agents","NBFCs":"Samvaad voice agents","Government":"Samvaad voice agents","Media":"Content Studio (dubbing)","Startups":"Model APIs (self-serve)"}
+    seg.cell(r,15,prod[name.split(":")[0]]).font=BLACK
+    for j in range(1,16): seg.cell(r,j).border=BOX
 last=first+len(data)-1; tot=last+1
 seg.cell(tot,1,"Total").font=BOLD
 for col in "BIKM":
@@ -134,7 +136,7 @@ find=[
 ]
 for k,(lab,f,fmt) in enumerate(find,20):
     seg.cell(k,1,lab).font=BLACK; c=seg.cell(k,2,f); c.number_format=fmt; c.font=BOLD
-widths=[36,11,16,30,16,18,11,16,16,11,16,10,16,10]
+widths=[36,11,16,30,16,18,11,16,16,11,16,10,16,10,26]
 for j,w in enumerate(widths,1): seg.column_dimensions[get_column_letter(j)].width=w
 
 # ---------------- Sensitivity ----------------
