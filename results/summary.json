@@ -1,0 +1,71 @@
+{
+  "cost_per_voice_minute_inr": 1.72,
+  "tts_share_of_cost": 0.654,
+  "cost_per_minute_with_v4_flash_inr": 0.97,
+  "change_with_v4_flash": -0.436,
+  "serviceable_market_cr_per_year": 63.4,
+  "sarvam_revenue_potential_cr_per_year": 12.7,
+  "enterprise_accounts": 232,
+  "enterprise_share_of_serviceable": 0.495,
+  "large_bank_vs_startup_spend": 171.9,
+  "segments": [
+    {
+      "segment": "Banks: public and private",
+      "accounts": 33,
+      "annual_spend_per_adopter_inr": 10316400,
+      "serviceable_cr": 17.02
+    },
+    {
+      "segment": "Banks: small finance, RRB, payments",
+      "accounts": 43,
+      "annual_spend_per_adopter_inr": 1031640,
+      "serviceable_cr": 1.33
+    },
+    {
+      "segment": "Banks: foreign (India operations)",
+      "accounts": 44,
+      "annual_spend_per_adopter_inr": 206328,
+      "serviceable_cr": 0.18
+    },
+    {
+      "segment": "Insurers: life",
+      "accounts": 26,
+      "annual_spend_per_adopter_inr": 2063280,
+      "serviceable_cr": 2.15
+    },
+    {
+      "segment": "Insurers: general and health",
+      "accounts": 33,
+      "annual_spend_per_adopter_inr": 2063280,
+      "serviceable_cr": 2.72
+    },
+    {
+      "segment": "NBFCs: RBI upper layer",
+      "accounts": 17,
+      "annual_spend_per_adopter_inr": 4126560,
+      "serviceable_cr": 3.51
+    },
+    {
+      "segment": "Government: states and UTs",
+      "accounts": 36,
+      "annual_spend_per_adopter_inr": 4126560,
+      "serviceable_cr": 4.46
+    },
+    {
+      "segment": "Media: private TV channels",
+      "accounts": 908,
+      "annual_spend_per_adopter_inr": 288000,
+      "serviceable_cr": 5.23
+    },
+    {
+      "segment": "Startups: DPIIT recognised",
+      "accounts": 223000,
+      "annual_spend_per_adopter_inr": 60000,
+      "serviceable_cr": 26.76
+    }
+  ],
+  "sensitivity_range_cr": [
+    41.5,
+    107.1
+  ]
+}
